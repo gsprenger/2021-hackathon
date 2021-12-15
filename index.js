@@ -1,7 +1,11 @@
 document.addEventListener('DOMContentLoaded', function () {
-  const PORTRAIT = true;
+  const PORTRAIT = false;
+  const BACKGROUNDCOLOR = '#FAFAFA' // title bgcolor is set in CSS
   const RATIO = 0.5
-  const BACKGROUNDCOLOR = '#FAFAFA'
+
+  const PLAYER_SPEED = 5
+  const ENEMY_SPEED = PORTRAIT === true ? 3 : 5;
+  const ENEMY_HEALTH = PORTRAIT === true ? 50 : 80;
   const WAVE = 1800;
 
   var speedUpSprite = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABdElEQVRYR82W0RXCIAxF0zXcpG7jnyP55xwuYDdxjXpSm/oIoQlHetA/BJLLy4N0IPxN5zkZlwbjc7CmbhOF9l9H2vZ/A3HyQuAsmbGWk2PgvYPg2g9ATXKJDHtqkst22TOYyaUUoogeA8SNnmSdXMohc3rMIfi/FACViEBM5xkBvKTWfA7AaKWTG1BagQgEqpKXwDu5UskqgQeBPmjqATRjBCL3ADp8rxQFE7YB6FqCSHKlTFsTdr+GP3oAn9+4Cbs/xcbb7nbE5s1IS+8RHNKOuSleYv18vH/7efI5cQrufxnfA5y8FFgLYq2dTjSPEHhPRFy7fA/UJN+qBcA1ybf9K/CAyaUEokRo/CDCkzPM8latalhjnEsARI0lwFpnCyKZUwBLDAcCVcgAIhBYBgIALEUEgtdkJYjKv4EqAE9+Pf9fHgiZTvujpQlrbsQhJUjMtXMTDjNh5AZkKrW8hl080P0ptt52rxs3b0bafB5Ay3b8BvT6cqvw5EPXAAAAAElFTkSuQmCC';
@@ -704,7 +708,7 @@ document.addEventListener('DOMContentLoaded', function () {
     this.frame = 0;
     this.burnFrame = 0;
     this.weapon = weapon;
-    this.speed = 5;
+    this.speed = PLAYER_SPEED;
     this.powerLevel = 1;
     this.bulletTimer = 5;
     this.bulletCoolDown = 5;
@@ -994,8 +998,8 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   Popcorn.prototype = new Ship();
-  Popcorn.SPEED = PORTRAIT === true ? 3 : 5;
-  Popcorn.HEALTH = PORTRAIT === true ? 50 : 80;
+  Popcorn.SPEED = ENEMY_SPEED;
+  Popcorn.HEALTH = ENEMY_HEALTH
 
   Popcorn.prototype.reset = function() {
     if (PORTRAIT === 0) {
