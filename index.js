@@ -618,7 +618,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (this.dir === 1) this.vy = this.speed + (Math.min(game.currentState.player.powerLevel * 2, 20));
     if (this.dir === -1) this.vy = this.speed;
     this.y -= this.vy;
-    if (this.y <= 0) {
+    if (this.y <= 0 - this.height) {
       this.alive = false;
     }
   }
