@@ -1,7 +1,11 @@
-document.addEventListener("DOMContentLoaded", function () {
-  const PORTRAIT = true;
-  const RATIO = 0.5;
-  const BACKGROUNDCOLOR = "#FAFAFA";
+document.addEventListener('DOMContentLoaded', function () {
+  const PORTRAIT = false;
+  const BACKGROUNDCOLOR = '#FAFAFA' // title bgcolor is set in CSS
+  const RATIO = 0.5
+
+  const PLAYER_SPEED = 5
+  const ENEMY_SPEED = PORTRAIT === true ? 3 : 5;
+  const ENEMY_HEALTH = PORTRAIT === true ? 50 : 80;
   const WAVE = 1800;
 
   var speedUpSprite =
@@ -759,7 +763,7 @@ document.addEventListener("DOMContentLoaded", function () {
     this.frame = 0;
     this.burnFrame = 0;
     this.weapon = weapon;
-    this.speed = 5;
+    this.speed = PLAYER_SPEED;
     this.powerLevel = 1;
     this.bulletTimer = 5;
     this.bulletCoolDown = 5;
@@ -1054,8 +1058,8 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   Popcorn.prototype = new Ship();
-  Popcorn.SPEED = PORTRAIT === true ? 3 : 5;
-  Popcorn.HEALTH = PORTRAIT === true ? 50 : 80;
+  Popcorn.SPEED = ENEMY_SPEED;
+  Popcorn.HEALTH = ENEMY_HEALTH
 
   Popcorn.prototype.reset = function () {
     if (PORTRAIT === 0) {
