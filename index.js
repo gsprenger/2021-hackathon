@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     this.y += travel;
     if(this.y > canvas.height) {
-      this.y = 0;
+      this.y = -50;
     }
   }
   Game.prototype.updateScore = function() {
