@@ -297,7 +297,6 @@ document.addEventListener('DOMContentLoaded', function () {
     this.enemyTimerNightmare = 5;
     this.currentEnemyTimer = this.enemyTimerEasy;
     this.powerUpTimer = 1600;
-    this.powerUpTimer = 200;
     this.starField = [];
     for (var i = 0; i < 1024; i++) {
       this.starField.push(
@@ -758,7 +757,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (inputManager.shooting || game.autoShoot) {
       if (this.bulletCoolDown === this.bulletTimer) {
-        this.shoot();
+        if (PORTRAIT === true) {
+          this.shootY();
+        } else {
+          this.shootX();
+        }
         this.bulletTimer = 0;
       } else {
         this.bulletTimer++;
@@ -793,50 +796,37 @@ document.addEventListener('DOMContentLoaded', function () {
     this.update()
   }
 
-  Player.prototype.shoot = function() {
+  Player.prototype.shootX = function() {
+    var bullet = this.bulletPool.find(notAlive);
+    if (!bullet) {
+      return;
+    }
+    bullet.alive = true;
+
+    const bulletW = bullet.width
+    const bulletH = bullet.height
+    const bulletX = this.x + this.width - bulletW
+    const bulletY = this.y + this.height * .5 - bulletH * .5
+
     if (this.powerLevel === 1) {
-      var bullet = this.bulletPool.find(notAlive);
-      if (!bullet) {
-        return;
-      }
-      if (PORTRAIT === true) {
-        bullet.x = this.x + (this.width * .5) - (bullet.width * .5);
-        bullet.y = this.y;
-      } else {
-        bullet.x = this.x + this.width - bullet.width;
-        bullet.y = (this.y + (this.height * .5)) - (bullet.height * .5);
-      }
-      bullet.alive = true;
+      bullet.x = bulletX;
+      bullet.y = bulletY;
     }
 
     if (this.powerLevel === 2) {
-      var bullet = this.bulletPool.find(notAlive);
-      if (!bullet) {
-        return;
-      }
-      bullet.alive = true;
-
       var bullet2 = this.bulletPool.find(notAlive);
       if (!bullet) {
         return;
       }
       bullet2.alive = true;
 
-      bullet.x = this.x + this.width - bullet.width;
-      bullet.y = (this.y + (this.height * .5)) - (bullet.height * .5) - 6;
-
-
-      bullet2.x = this.x + this.width - bullet2.width;
-      bullet2.y = (this.y + (this.height * .5)) - (bullet2.height * .5) + 6;
+      bullet.x = bulletX;
+      bullet.y = bulletY - 6;
+      bullet2.x = bulletX;
+      bullet2.y = bulletY + 6;
     }
 
     if (this.powerLevel >= 3) {
-      var bullet = this.bulletPool.find(notAlive);
-      if (!bullet) {
-        return;
-      }
-      bullet.alive = true;
-
       var bullet2 = this.bulletPool.find(notAlive);
       if (!bullet2) {
         return;
@@ -849,15 +839,12 @@ document.addEventListener('DOMContentLoaded', function () {
       }
       bullet3.alive = true;
 
-      bullet.x = this.x + this.width - bullet.width;
-      bullet.y = (this.y + (this.height * .5)) - (bullet.height * .5) - 12;
-
-
-      bullet2.x = this.x + this.width - bullet2.width + 8;
-      bullet2.y = (this.y + (this.height * .5)) - (bullet2.height * .5);
-
-      bullet3.x = this.x + this.width - bullet3.width;
-      bullet3.y = (this.y + (this.height * .5)) - (bullet3.height * .5) + 12;
+      bullet.x = bulletX;
+      bullet.y = bulletY - 12;
+      bullet2.x = bulletX + 8;
+      bullet2.y = bulletY;
+      bullet3.x = bulletX;
+      bullet3.y = bulletY + 12;
     }
 
     if (this.powerLevel >= 5) {
@@ -866,19 +853,92 @@ document.addEventListener('DOMContentLoaded', function () {
         return;
       }
       bullet.alive = true;
-
       var bullet2 = this.bulletPool.find(notAlive);
       if (!bullet2) {
         return;
       }
       bullet2.alive = true;
-      bullet.x = this.x + this.width - bullet.width - 8;
-      bullet.y = (this.y + (this.height * .5)) - (bullet.height * .5) - 24;
-      bullet2.x = this.x + this.width - bullet2.width - 8;
-      bullet2.y = (this.y + (this.height * .5)) - (bullet2.height * .5) + 24;
+      bullet.x = bulletX - 8;
+      bullet.y = bulletY - 24;
+      bullet2.x = bulletX - 8;
+      bullet2.y = bulletY + 24;
+    }
+  }
 
+  Player.prototype.shootY = function() {
+    var bullet = this.bulletPool.find(notAlive);
+    if (!bullet) {
+      return;
+    }
+    bullet.alive = true;
+
+    const bulletW = bullet.width
+    const bulletH = bullet.height
+    const bulletX = bullet.x = this.x + (this.width * .5) - (bulletW * .5);
+    const bulletY = this.y
+
+    if (this.powerLevel === 1) {
+      bullet.x = bulletX;
+      bullet.y = bulletY;
     }
 
+    if (this.powerLevel === 2) {
+      var bullet2 = this.bulletPool.find(notAlive);
+      if (!bullet) {
+        return;
+      }
+      bullet2.alive = true;
+      bullet.x = bulletX - 6;
+      bullet.y = bulletY;
+      bullet2.x = bulletX + 6;
+      bullet2.y = bulletY;
+    }
+
+    if (this.powerLevel >= 3) {
+      var bullet2 = this.bulletPool.find(notAlive);
+      if (!bullet2) {
+        return;
+      }
+      bullet2.alive = true;
+
+      var bullet3 = this.bulletPool.find(notAlive);
+      if (!bullet3) {
+        return;
+      }
+      bullet3.alive = true;
+
+      bullet.x = bulletX;
+      bullet.y = bulletY - 12;
+      bullet2.x = bulletX + 8;
+      bullet2.y = bulletY;
+      bullet3.x = bulletX;
+      bullet3.y = bulletY + 12;
+
+      bullet.x = bulletX - 12;
+      bullet.y = bulletY;
+      bullet2.x = bulletX;
+      bullet2.y = bulletY - 8;
+      bullet3.x = bulletX + 12;
+      bullet3.y = bulletY;
+    }
+
+    if (this.powerLevel >= 5) {
+      var bullet = this.bulletPool.find(notAlive);
+      if (!bullet) {
+        return;
+      }
+      bullet.alive = true;
+      var bullet2 = this.bulletPool.find(notAlive);
+      if (!bullet2) {
+        return;
+      }
+
+      bullet2.alive = true;
+      bullet.x = bulletX - 24;
+      bullet.y = bulletY + 8;
+      bullet2.x = bulletX + 24;
+      bullet2.y = bulletY + 8;
+    }
   }
 
   Player.prototype.render = function(context) {
@@ -1022,7 +1082,6 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   Game.prototype.init = function() {
-    // game.autoShoot = false;
     if (PORTRAIT === true) {
       this.autoShoot = true;
     } else {
