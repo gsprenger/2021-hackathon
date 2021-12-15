@@ -994,8 +994,8 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   Popcorn.prototype = new Ship();
-  Popcorn.SPEED = 5;
-  Popcorn.HEALTH = 80;
+  Popcorn.SPEED = PORTRAIT === true ? 3 : 5;
+  Popcorn.HEALTH = PORTRAIT === true ? 50 : 80;
 
   Popcorn.prototype.reset = function() {
     if (PORTRAIT === 0) {
