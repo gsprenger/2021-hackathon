@@ -65,3 +65,19 @@ body {
 .banner {
   align-self: flex-start;
 }
+
+.move-arrow {
+  position: absolute;
+  bottom: 0;
+  width: 100px;
+  height: 100px;
+  background-color: #333;
+}
+
+#move-right {
+  right: 0;
+}
+
+#move-left {
+  left: 0;
+}

@@ -1155,5 +1155,33 @@ document.addEventListener('DOMContentLoaded', function () {
     }.bind(inputManager)
   );
 
+  document.getElementById('move-left').addEventListener(
+    'touchstart',
+    function(e){
+      this.leftPressed = true
+    }.bind(inputManager)
+  );
+
+  document.getElementById('move-left').addEventListener(
+    'touchend',
+    function(e){
+      this.leftPressed = false
+    }.bind(inputManager)
+  );
+
+  document.getElementById('move-right').addEventListener(
+    'touchstart',
+    function(e){
+      this.rightPressed = true
+    }.bind(inputManager)
+  );
+
+  document.getElementById('move-right').addEventListener(
+    'touchend',
+    function(e){
+      this.rightPressed = false
+    }.bind(inputManager)
+  );
+
   game.init();
 });
