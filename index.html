@@ -1,22 +1,27 @@
 <html>
   <head>
-    <link rel='stylesheet' href='index.css' />
-    <script src='index.js'></script>
+    <link rel="stylesheet" href="index.css" />
+    <script src="index.js"></script>
   </head>
   <body>
-    <div id="game_over" class="state-ui-container">
-
-    </div>
-    <div id="title" class="state-ui-container">
-
-    </div>
+    <div id="game_over" class="state-ui-container"></div>
+    <div id="title" class="state-ui-container"></div>
     <div id="game" class="state-ui-container">
       <div class="banner">
         <div id="score" class="ui-text">SCORE: 0</div>
         <div id="lives" class="ui-text">LIVES: 3</div>
       </div>
     </div>
-    <div id="move-left" class="move-arrow"></div>
-    <div id="move-right" class="move-arrow"></div>
+    <div id="move-left" class="move-arrow">
+      <img width="50px" height="50px" src="./assets/arrow-left.svg" />
+    </div>
+    <div id="move-right" class="move-arrow">
+      <img
+        width="50px"
+        height="50px"
+        src="./assets/arrow-right.svg"
+        fill="teal"
+      />
+    </div>
   </body>
 </html>

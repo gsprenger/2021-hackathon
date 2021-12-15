@@ -1,5 +1,5 @@
 * {
-  margin:  0;
+  margin: 0;
   padding: 0;
 }
 
@@ -8,7 +8,7 @@ body {
 }
 
 #viewport {
-  background: #FAFAFA;
+  background: #fafafa;
   display: block;
   width: 100%;
   height: 100%;
@@ -32,9 +32,8 @@ body {
   font-variant-numeric: tabular-nums;
   margin: 10px;
   color: #e4e4e4;
-  text-shadow: 0 2px 2px rgba(125,0,0,.51),
-    0 0 10px rgba(255,0,255,1),
-    0 0 10px rgba(255,0,255,1);
+  text-shadow: 0 2px 2px rgba(125, 0, 0, 0.51), 0 0 10px rgba(255, 0, 255, 1),
+    0 0 10px rgba(255, 0, 255, 1);
   text-align: left;
 }
 
@@ -49,8 +48,6 @@ body {
 .ui-text--heading {
   font-size: 4em;
 }
-
-
 
 .state-ui-container {
   width: 100%;
@@ -68,16 +65,15 @@ body {
 
 .move-arrow {
   position: absolute;
-  bottom: 0;
-  width: 100px;
-  height: 100px;
-  background-color: #333;
+  bottom: 20;
+  width: 50px;
+  height: 50px;
 }
 
 #move-right {
-  right: 0;
+  right: 20;
 }
 
 #move-left {
-  left: 0;
+  left: 20;
 }
