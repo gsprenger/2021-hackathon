@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const PLAYER_SPEED = 5;
   const ENEMY_SPEED = PORTRAIT === true ? 3 : 3;
   const ENEMY_HEALTH = PORTRAIT === true ? 50 : 80;
+  const MAX_LIVES = 3;
   const WAVE = 1800;
   const DEATH_TIMER = 150;
 
@@ -563,7 +564,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   Game.prototype.reset = function () {
     this.score = 0;
-    this.lives = 3;
+    this.lives = MAX_LIVES;
     this.updateScore();
     this.updateLives();
   };
