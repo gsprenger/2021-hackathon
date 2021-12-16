@@ -1255,12 +1255,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }.bind(inputManager)
   );
 
-// FIXME: prevent zoom in canvas
-  const canvas2 = document.getElementById("viewport")
-  canvas2.addEventListener("touchstart", (event) => {
-    event.preventDefault();
-  });
-
   const arrowRight = document.getElementById("move-right");
   const arrowLeft = document.getElementById("move-left");
   // Remove arrows for landscape view
