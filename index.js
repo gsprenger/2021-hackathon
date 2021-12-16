@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const PORTRAIT = window.location.href.includes('v=p');
   if (PORTRAIT === true) {
     document.getElementById('title-text').textContent = 'Tap an arrow to start'
-    document.getElementById('game_over-text').textContent = 'Game over!\nMove to restart'
+    document.getElementById('game_over-text').textContent = 'Game over!'
   }
   const BACKGROUNDCOLOR = '#FAFAFA' // title bgcolor is set in CSS
   const RATIO = 0.5
