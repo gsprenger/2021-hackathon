@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const ENEMY_SPEED = PORTRAIT === true ? 3 : 3;
   const ENEMY_HEALTH = PORTRAIT === true ? 50 : 80;
   const WAVE = 1800;
+  const DEATH_TIMER = 150;
 
   var speedUpSprite =
     "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABdElEQVRYR82W0RXCIAxF0zXcpG7jnyP55xwuYDdxjXpSm/oIoQlHetA/BJLLy4N0IPxN5zkZlwbjc7CmbhOF9l9H2vZ/A3HyQuAsmbGWk2PgvYPg2g9ATXKJDHtqkst22TOYyaUUoogeA8SNnmSdXMohc3rMIfi/FACViEBM5xkBvKTWfA7AaKWTG1BagQgEqpKXwDu5UskqgQeBPmjqATRjBCL3ADp8rxQFE7YB6FqCSHKlTFsTdr+GP3oAn9+4Cbs/xcbb7nbE5s1IS+8RHNKOuSleYv18vH/7efI5cQrufxnfA5y8FFgLYq2dTjSPEHhPRFy7fA/UJN+qBcA1ybf9K/CAyaUEokRo/CDCkzPM8latalhjnEsARI0lwFpnCyKZUwBLDAcCVcgAIhBYBgIALEUEgtdkJYjKv4EqAE9+Pf9fHgiZTvujpQlrbsQhJUjMtXMTDjNh5AZkKrW8hl080P0ptt52rxs3b0bafB5Ay3b8BvT6cqvw5EPXAAAAAElFTkSuQmCC";
@@ -256,8 +257,8 @@ document.addEventListener('DOMContentLoaded', function () {
     this.timer = 0;
     console.log("Game Over");
     game.showUI("game_over");
-    document.querySelector("#final_score").innerHTML =
-      "FINAL SCORE: " + game.score;
+    // document.querySelector("#final_score").innerHTML =
+    //   "FINAL SCORE: " + game.score;
   };
 
   GameOverState.prototype.update = function () {
@@ -766,6 +767,7 @@ document.addEventListener('DOMContentLoaded', function () {
     this.powerLevel = 1;
     this.bulletTimer = 5;
     this.bulletCoolDown = 5;
+    this.deathRestartTimer = 0;
     this.img = document.createElement("img");
     this.burnImg = document.createElement("img");
     if (PORTRAIT === true) {
@@ -791,7 +793,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
   Player.prototype.update = function () {
     if (!this.alive) {
-      if (inputManager.start) {
+      this.deathRestartTimer += 1
+      if (inputManager.start || this.deathRestartTimer >= DEATH_TIMER) {
+        this.deathRestartTimer = 0;
         game.currentState.init();
       }
       return;
