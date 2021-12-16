@@ -44,6 +44,13 @@ body {
   right: 0;
 }
 
+#game_over,
+#title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 #title-text,
 #game_over-text {
   text-align: center;
