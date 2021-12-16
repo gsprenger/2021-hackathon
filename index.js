@@ -1091,7 +1091,7 @@ document.addEventListener("DOMContentLoaded", function () {
   Popcorn.prototype.updateY = function () {
     this.vy = this.speed;
     this.y += this.vy;
-    if (this.y + this.width >= canvas.height) {
+    if (this.y >= canvas.height) {
       this.reset();
     }
   };
