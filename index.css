@@ -27,7 +27,7 @@ body {
 .ui-text {
   user-select: none;
   font-family: "VT323";
-  font-size: 58px;
+  font-size: 44px;
   font-weight: bold;
   font-variant-numeric: tabular-nums;
   margin: 10px;
@@ -44,8 +44,10 @@ body {
   right: 0;
 }
 
-#title-text, #game_over-text {
+#title-text,
+#game_over-text {
   text-align: center;
+  font-size: 50px;
 }
 
 .ui-text--heading {
@@ -71,7 +73,7 @@ body {
 
 .move-arrow {
   position: absolute;
-  bottom: 250;
+  bottom: 150;
   width: 80px;
   height: 80px;
   padding: 15px;
