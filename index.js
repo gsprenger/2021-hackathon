@@ -1,5 +1,8 @@
 document.addEventListener('DOMContentLoaded', function () {
-  const PORTRAIT = false;
+  const PORTRAIT = window.location.href.includes('v=p');
+  if (PORTRAIT === true) {
+    document.getElementById('title-text').textContent = 'Tap an arrow to start'
+  }
   const BACKGROUNDCOLOR = '#FAFAFA' // title bgcolor is set in CSS
   const RATIO = 0.5
 
