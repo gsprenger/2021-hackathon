@@ -1285,6 +1285,10 @@ document.addEventListener("DOMContentLoaded", function () {
     "touchend",
     function (e) {
       this.leftPressed = false;
+      if (PORTRAIT) {
+        this.start = false;
+        return;
+      }
     }.bind(inputManager)
   );
 
@@ -1305,6 +1309,10 @@ document.addEventListener("DOMContentLoaded", function () {
     "touchend",
     function (e) {
       this.rightPressed = false;
+      if (PORTRAIT) {
+        this.start = false;
+        return;
+      }
     }.bind(inputManager)
   );
 
