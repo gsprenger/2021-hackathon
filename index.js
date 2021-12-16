@@ -129,10 +129,12 @@ document.addEventListener("DOMContentLoaded", function () {
   };
   Game.prototype.updateScore = function () {
     document.getElementById("score").innerHTML = "SCORE: " + this.score;
+    document.getElementById("score").setAttribute("style", "font-size:20px");
   };
 
   Game.prototype.updateLives = function () {
     document.getElementById("lives").innerHTML = "LIVES: " + this.lives;
+    document.getElementById("lives").setAttribute("style", "font-size:20px");
   };
   Star.prototype.render = function (context) {
     if (game.overdrive) {
