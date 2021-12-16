@@ -44,6 +44,10 @@ body {
   right: 0;
 }
 
+#title-text, #game_over-text {
+  text-align: center;
+}
+
 .ui-text--heading {
   font-size: 4em;
 }
