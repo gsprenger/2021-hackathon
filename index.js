@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("game_over-text").textContent = "Game over!";
   }
   const BACKGROUNDCOLOR = "#FAFAFA"; // title bgcolor is set in CSS
-  const RATIO = PORTRAIT ? 0.4 : 0.5;
+  const RATIO = 0.5;
 
   const PLAYER_SPEED = 5;
   const ENEMY_SPEED = PORTRAIT === true ? 2.3 : 3;
