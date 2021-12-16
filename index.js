@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-  const PORTRAIT = window.location.href.includes('v=ppp');
+  const PORTRAIT = window.location.href.includes('v=p');
   if (PORTRAIT === true) {
     document.getElementById('title-text').textContent = 'Tap an arrow to start'
   }
