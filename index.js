@@ -1,14 +1,14 @@
-document.addEventListener('DOMContentLoaded', function () {
-  const PORTRAIT = window.location.href.includes('v=p');
+document.addEventListener("DOMContentLoaded", function () {
+  const PORTRAIT = window.location.href.includes("v=p");
   if (PORTRAIT === true) {
-    document.getElementById('title-text').textContent = 'Tap an arrow to start'
-    document.getElementById('game_over-text').textContent = 'Game over!'
+    document.getElementById("title-text").textContent = "Tap an arrow to start";
+    document.getElementById("game_over-text").textContent = "Game over!";
   }
-  const BACKGROUNDCOLOR = '#FAFAFA' // title bgcolor is set in CSS
-  const RATIO = 0.5
+  const BACKGROUNDCOLOR = "#FAFAFA"; // title bgcolor is set in CSS
+  const RATIO = PORTRAIT ? 0.3 : 0.5;
 
   const PLAYER_SPEED = 5;
-  const ENEMY_SPEED = PORTRAIT === true ? 3 : 3;
+  const ENEMY_SPEED = PORTRAIT === true ? 2.3 : 3;
   const ENEMY_HEALTH = PORTRAIT === true ? 50 : 80;
   const MAX_LIVES = 3;
   const WAVE = 1800;
@@ -795,7 +795,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   Player.prototype.update = function () {
     if (!this.alive) {
-      this.deathRestartTimer += 1
+      this.deathRestartTimer += 1;
       if (inputManager.start || this.deathRestartTimer >= DEATH_TIMER) {
         this.deathRestartTimer = 0;
         game.currentState.init();

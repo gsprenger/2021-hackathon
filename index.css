@@ -73,7 +73,7 @@ body {
 
 .move-arrow {
   position: absolute;
-  bottom: 150;
+  bottom: calc(100vh / 2);
   width: 80px;
   height: 80px;
   padding: 15px;
