@@ -72,16 +72,16 @@ body {
 
 .move-arrow {
   position: absolute;
-  bottom: calc(100vh / 2);
+  bottom: calc(100vh * 0.1);
   width: 80px;
   height: 80px;
   padding: 15px;
 }
 
 #move-right {
-  right: 20;
+  right: 0;
 }
 
 #move-left {
-  left: 20;
+  left: 0;
 }
